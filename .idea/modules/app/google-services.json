@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "842991311443",
+    "firebase_url": "https://chatall-fdd91.firebaseio.com",
+    "project_id": "chatall-fdd91",
+    "storage_bucket": "chatall-fdd91.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:842991311443:android:d4f9cc4d8d97993579c4a6",
+        "android_client_info": {
+          "package_name": "com.example.chatall"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "842991311443-brp0m7d78bkdjkdtab08368abcpjm1v0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.chatall",
+            "certificate_hash": "5b37da1b919bb8239ab318a58da29c730bf34729"
+          }
+        },
+        {
+          "client_id": "842991311443-7d32k6g448vuog90b6f3i63j055k2le5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4fnm-PIY-O3Z11LurOM2lwetlwsxtWl8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "842991311443-7d32k6g448vuog90b6f3i63j055k2le5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
