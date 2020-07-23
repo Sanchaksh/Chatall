@@ -1,6 +1,8 @@
 package com.example.chatall
 
 import android.os.Bundle
+import android.os.Parcel
+import android.os.Parcelable
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.firebase.ui.database.FirebaseListAdapter
@@ -12,7 +14,11 @@ import com.google.firebase.database.core.view.View
 import kotlinx.android.synthetic.main.activity_chat.*
 
 
-class ChatActivity : AppCompatActivity() {
+@Suppress("CAST_NEVER_SUCCEEDS")
+class ChatActivity() : AppCompatActivity(), Parcelable {
+    constructor(parcel: Parcel) : this() {
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
@@ -34,6 +40,7 @@ class ChatActivity : AppCompatActivity() {
             .setQuery(query, Message::class.java).build()
 
         val adapter: FirebaseListAdapter<Message> = object : FirebaseListAdapter<Message>(options) {
+
                 fun populateView(v: View, model: Message, position: Int) {
 
                     (v as TextView).text = model.email + "\n" + model.msg
@@ -42,9 +49,28 @@ class ChatActivity : AppCompatActivity() {
             override fun populateView(v: android.view.View, model: Message, position: Int) {
                 TODO("Not yet implemented")
             }
+
         }
         adapter.startListening()
         messages.adapter = adapter
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<ChatActivity> {
+        override fun createFromParcel(parcel: Parcel): ChatActivity {
+            return ChatActivity(parcel)
+        }
+
+        override fun newArray(size: Int): Array<ChatActivity?> {
+            return arrayOfNulls(size)
+        }
     }
 }
 class Message(var email: String, var msg: String) {
