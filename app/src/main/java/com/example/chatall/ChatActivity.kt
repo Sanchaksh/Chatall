@@ -26,22 +26,27 @@ class ChatActivity : AppCompatActivity() {
                 )
         }
 
-        val query:DatabaseReference =  FirebaseDatabase.getInstance().reference.child("messages")
+        val query = FirebaseDatabase.getInstance().reference.child("messages")
+
 
         val options: FirebaseListOptions<Message> = FirebaseListOptions.Builder<Message>()
             .setLayout(android.R.layout.simple_expandable_list_item_1)
             .setQuery(query, Message::class.java).build()
 
         val adapter: FirebaseListAdapter<Message> = object : FirebaseListAdapter<Message>(options) {
-                override fun populateView(v: View, model: Message, position: Int) {
+                fun populateView(v: View, model: Message, position: Int) {
 
                     (v as TextView).text = model.email + "\n" + model.msg
                 }
+
+            override fun populateView(v: android.view.View, model: Message, position: Int) {
+                TODO("Not yet implemented")
             }
+        }
         adapter.startListening()
         messages.adapter = adapter
     }
 }
 class Message(var email: String, var msg: String) {
-    constructor() : this (email:"", msg:"")
+    constructor() : this ("","")
 }
